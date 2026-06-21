@@ -7,142 +7,179 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
-body{
-overflow:hidden;
-background:#000;
-color:white;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    color:white;
 }
 
-/* PROGRESS */
+/* Progress Bar */
 .progress{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:4px;
-background:rgba(255,255,255,0.1);
-z-index:999;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:rgba(255,255,255,0.1);
+    z-index:9999;
 }
 
 .progress-bar{
-height:100%;
-width:0%;
-background:#60a5fa;
-transition:0.3s;
+    height:100%;
+    width:0%;
+    background:#60a5fa;
+    transition:0.4s;
 }
 
-/* WRAPPER */
+/* Slides */
 .wrapper{
-height:100vh;
-width:100vw;
-overflow:hidden;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
 }
 
 .slides{
-height:100%;
-width:100%;
-transition:transform 0.8s ease;
+    transition:transform .8s ease;
 }
 
-/* SLIDE */
 .slide{
-height:100vh;
-width:100vw;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-flex-direction:column;
-padding:20px;
-position:relative;
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+    padding:20px;
 }
 
 .blue{
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
 }
 
 .grey{
-background:linear-gradient(135deg,#111827,#374151);
+    background:linear-gradient(135deg,#111827,#374151);
 }
 
 .card{
-background:rgba(255,255,255,0.07);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,0.1);
-padding:30px;
-border-radius:20px;
-max-width:800px;
+    max-width:800px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 0 30px rgba(255,255,255,0.05);
 }
 
 h1{
-font-size:2.2rem;
-margin-bottom:10px;
+    font-size:2.5rem;
+    margin-bottom:15px;
 }
 
 .story{
-font-size:1.1rem;
-line-height:1.7;
-min-height:70px;
+    font-size:1.15rem;
+    line-height:1.8;
+    min-height:90px;
 }
 
 .shayari{
-margin-top:20px;
-font-style:italic;
-color:#c7d2fe;
-min-height:60px;
-line-height:1.7;
+    margin-top:25px;
+    font-style:italic;
+    color:#dbeafe;
+    line-height:1.8;
+    min-height:80px;
 }
 
-button{
-position:absolute;
-bottom:30px;
-right:20px;
-padding:10px 18px;
-border:none;
-border-radius:10px;
-background:#2563eb;
-color:white;
-cursor:pointer;
+.nextBtn{
+    position:absolute;
+    bottom:35px;
+    right:25px;
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
 }
 
-.hint{
-position:absolute;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
-font-size:12px;
-opacity:0.6;
-animation:bounce 1.5s infinite;
+.nextBtn:hover{
+    transform:scale(1.05);
+}
+
+.swipe{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    opacity:.7;
+    animation:bounce 1.5s infinite;
 }
 
 @keyframes bounce{
-0%,100%{transform:translate(-50%,0);}
-50%{transform:translate(-50%,-10px);}
+    0%,100%{transform:translate(-50%,0);}
+    50%{transform:translate(-50%,-8px);}
 }
 
-/* FLOAT HEARTS */
+/* Floating Hearts */
 .heart{
-position:fixed;
-bottom:-20px;
-opacity:0.3;
-animation:floatUp linear infinite;
-pointer-events:none;
+    position:fixed;
+    bottom:-30px;
+    opacity:.3;
+    animation:floatUp linear infinite;
+    pointer-events:none;
 }
 
 @keyframes floatUp{
-from{transform:translateY(0);opacity:0;}
-to{transform:translateY(-120vh);opacity:1;}
+    from{
+        transform:translateY(0) scale(1);
+        opacity:0;
+    }
+    to{
+        transform:translateY(-120vh) scale(1.6);
+        opacity:1;
+    }
 }
 
-.final{
-font-size:2.5rem;
-margin-bottom:20px;
+.final-title{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.final-heart{
+    font-size:3rem;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
+}
+
+@media(max-width:768px){
+
+h1{
+    font-size:2rem;
+}
+
+.story,
+.shayari{
+    font-size:1rem;
+}
+
+.card{
+    padding:25px;
+}
 }
 </style>
 </head>
@@ -150,170 +187,368 @@ margin-bottom:20px;
 <body>
 
 <div class="progress">
-<div class="progress-bar" id="bar"></div>
+    <div class="progress-bar" id="bar"></div>
 </div>
 
 <div class="wrapper">
-<div class="slides" id="slides">
+    <div class="slides" id="slides">
 
-<!-- 14 slides -->
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><div class="hint">⬆ Swipe / ↓</div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide blue"><div class="card"><h1></h1><div class="story"></div><div class="shayari"></div></div><button onclick="next()">Next</button></div>
-<div class="slide grey"><div class="card"><div class="final">6 Months Together 💙</div><div class="story">From strangers to forever…</div><div class="shayari">“6 mahine sirf waqt nahi the,<br>ye ek khoobsurat safar tha Dudu ❤️”</div></div></div>
+        <!-- Slide 1 -->
+        <section class="slide blue">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <div class="swipe">⬆ Swipe Up</div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
 
-</div>
+        <!-- Slide 2 -->
+        <section class="slide grey">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 3 -->
+        <section class="slide blue">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 4 -->
+        <section class="slide grey">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 5 -->
+        <section class="slide blue">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 6 -->
+        <section class="slide grey">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 7 -->
+        <section class="slide blue">
+            <div class="card">
+                <h1></h1>
+                <div class="story"></div>
+                <div class="shayari"></div>
+            </div>
+            <button class="nextBtn" onclick="nextSlide()">Next ➜</button>
+        </section>
+
+        <!-- Slide 8 -->
+        <section class="slide grey">
+            <div class="card">
+                <div class="final-title">6 Months Together 💙</div>
+                <div class="story">
+                    From strangers to an irreplaceable bond...<br>
+                    and this is only the beginning.
+                </div>
+
+                <div class="shayari">
+                    "6 mahine sirf waqt nahi the,<br>
+                    Ye har din tumhare aur kareeb aane ka safar tha. ❤️"
+                    <br><br>
+                    "And if these six months felt this beautiful...<br>
+                    Imagine the rest of our story. ✨"
+                </div>
+
+                <div class="final-heart">💙</div>
+            </div>
+        </section>
+
+    </div>
 </div>
 
 <script>
 
-const data=[
+const slidesData = [
+
 {
-t:"Once Strangers",
-s:"20 September — two lives crossed accidentally 💙",
-q:"Kuch mulaqatein taqdeer likhti hain..."
+title:"Once Strangers...",
+story:"20 September — an ordinary day that quietly changed two lives forever 💙",
+shayari:"Kuch mulaqatein taqdeer likhti hain,<br>Aur kuch log zindagi ban jaate hain."
 },
+
 {
-t:"The Unexpected Person",
-s:"Dudu slowly became important in my life 💙",
-q:"Kabhi kabhi zindagi bina bataye sab de deti hai."
+title:"Something Changed",
+story:"18 December — one heart started feeling something special 💙",
+shayari:"Pehle sirf baatein thi,<br>Phir aadat bani,<br>Aur pata hi nahi chala kab zaroorat ban gaye."
 },
+
 {
-t:"Something Changed",
-s:"18 December — feelings started 💙",
-q:"Aadat kab zarurat ban gayi pata hi nahi chala."
+title:"It Began ❤️",
+story:"22 December — two strangers became 'Us'.",
+shayari:"Do alag kahaniyon ne,<br>Ek hi safar chun liya."
 },
+
 {
-t:"It Began ❤️",
-s:"22 December — we became 'Us'",
-q:"Do safar ek ho gaye."
+title:"A Small Beginning",
+story:"One random Instagram reply turned into daily calls and sleepless nights 🌙💙",
+shayari:"Ek reply se shuru hui baat,<br>Aaj dil ki har baat tak pahunch gayi."
 },
+
 {
-t:"Instagram Reply",
-s:"A random reply → daily calls → sleepless nights 🌙",
-q:"Ek message se poori duniya badal gayi."
+title:"Special Moments",
+story:"26 December • 27 January • 14 February • 9 April",
+shayari:"Kuch tareekh calendar mein hoti hain,<br>Aur kuch dil mein hamesha ke liye."
 },
+
 {
-t:"Nights We Never Counted",
-s:"Late night talks with Dudu 💙",
-q:"Neend se zyada tumhari baatein pasand thi."
+title:"7 January",
+story:"The cutest memory... still remembered with a smile 💙",
+shayari:"Waqt guzar gaya,<br>Par us din ki muskurahat aaj bhi wahi hai."
 },
+
 {
-t:"Home Feeling",
-s:"Dudu became comfort, habit, home 💙",
-q:"Tum mile toh laga dil ko jagah mil gayi."
-},
-{
-t:"Special Moments",
-s:"26 Dec • 27 Jan • 14 Feb • 9 Apr",
-q:"Kuch din zindagi mein hamesha ke liye bas jaate hain."
-},
-{
-t:"7 January",
-s:"Cute memory still smiling 💙",
-q:"Waqt beet gaya par ehsaas nahi."
-},
-{
-t:"Fights & Love",
-s:"We fight but always return 💙",
-q:"Mohabbat wahi jo har baar wapas laaye."
-},
-{
-t:"Us ❤️",
-s:"I never want life without Dudu",
-q:"Har narazgi ke baad bhi saath chahiye."
-},
-{
-t:"Dear Dudu",
-s:"Thank you for everything 💙",
-q:"Tum meri aadat nahi, meri zindagi ho."
-},
-{
-t:"6 Months 💙",
-s:"From strangers to irreplaceable",
-q:"Safar abhi shuru hua hai ✨"
+title:"Us ❤️",
+story:"We fight... we get upset... but we always find our way back.",
+shayari:"Mohabbat wahi hai,<br>Jahan har narazgi ke baad bhi saath rehne ki zid ho."
 }
+
 ];
 
-let i=0;
+let current = 0;
 
-const slides=document.getElementById("slides");
-const bar=document.getElementById("bar");
+const slidesContainer = document.getElementById("slides");
+const progressBar = document.getElementById("bar");
 
-function type(el,text,speed){
-el.innerHTML="";
-let x=0;
-let t=setInterval(()=>{
-if(x<text.length){
-el.innerHTML+=text[x];
-x++;
-}else clearInterval(t);
-},speed);
+function typeEffect(element,text,speed=25){
+    element.innerHTML="";
+    let i=0;
+
+    const timer=setInterval(()=>{
+        if(i<text.length){
+            element.innerHTML+=text.charAt(i);
+            i++;
+        }else{
+            clearInterval(timer);
+        }
+    },speed);
 }
 
-function render(){
+function renderSlides(){
 
-let all=document.querySelectorAll(".slide");
+    const slides=document.querySelectorAll(".slide");
 
-all.forEach((s,idx)=>{
-let h=s.querySelector("h1");
-let st=s.querySelector(".story");
-let sh=s.querySelector(".shayari");
+    slides.forEach((slide,index)=>{
 
-h.innerHTML=""; st.innerHTML=""; sh.innerHTML="";
+        if(index < slidesData.length){
 
-if(idx===i){
-type(h,data[idx].t,40);
-setTimeout(()=>st.innerHTML=data[idx].s,700);
-setTimeout(()=>sh.innerHTML=data[idx].q,1200);
+            slide.querySelector("h1").textContent="";
+            slide.querySelector(".story").innerHTML="";
+            slide.querySelector(".shayari").innerHTML="";
+
+            if(index===current){
+
+                typeEffect(
+                    slide.querySelector("h1"),
+                    slidesData[index].title,
+                    40
+                );
+
+                setTimeout(()=>{
+                    slide.querySelector(".story").innerHTML=
+                    slidesData[index].story;
+                },800);
+
+                setTimeout(()=>{
+                    slide.querySelector(".shayari").innerHTML=
+                    slidesData[index].shayari;
+                },1400);
+            }
+        }
+    });
+
+    slidesContainer.style.transform=
+    `translateY(-${current * 100}vh)`;
+
+    progressBar.style.width=
+    ((current+1)/8)*100 + "%";
 }
+
+function nextSlide(){
+    if(current<7){
+        current++;
+        renderSlides();
+    }
+}
+
+function prevSlide(){
+    if(current>0){
+        current--;
+        renderSlides();
+    }
+}
+
+/* Touch Swipe */
+
+let startY=0;
+
+window.addEventListener("touchstart",(e)=>{
+    startY=e.touches[0].clientY;
 });
 
-slides.style.transform=`translateY(-${i*100}vh)`;
-bar.style.width=((i+1)/data.length)*100+"%";
-}
+window.addEventListener("touchend",(e)=>{
 
-function next(){
-if(i<data.length-1){
-i++;
-render();
-}
-}
+    let endY=e.changedTouches[0].clientY;
+
+    if(startY-endY>50){
+        nextSlide();
+    }
+
+    if(endY-startY>50){
+        prevSlide();
+    }
+});
+
+/* Keyboard */
 
 window.addEventListener("keydown",(e)=>{
-if(e.key==="ArrowDown") next();
+
+    if(e.key==="ArrowDown"){
+        nextSlide();
+    }
+
+    if(e.key==="ArrowUp"){
+        prevSlide();
+    }
 });
 
-let y=0;
-window.addEventListener("touchstart",e=>y=e.touches[0].clientY);
-window.addEventListener("touchend",e=>{
-let d=e.changedTouches[0].clientY;
-if(y-d>50) next();
-});
+/* Floating Hearts */
 
-/* hearts */
-for(let k=0;k<25;k++){
-let d=document.createElement("div");
-d.className="heart";
-d.innerHTML="💙";
-d.style.left=Math.random()*100+"vw";
-d.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(d);
+for(let i=0;i<25;i++){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+    heart.innerHTML=Math.random()>0.5?"💙":"✨";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(14+Math.random()*20)+"px";
+    heart.style.animationDuration=(5+Math.random()*8)+"s";
+
+    document.body.appendChild(heart);
 }
 
-render();
+renderSlides();
 
 </script>
 
 </body>
-</html>
+</html> 
+const slidesData = [
+
+{
+title:"Once Strangers...",
+story:"20 September — an ordinary day that quietly changed two lives forever 💙",
+shayari:"Kuch mulaqatein taqdeer likhti hain,<br>Aur kuch log zindagi ban jaate hain."
+},
+
+{
+title:"The Unexpected Person",
+story:"We met by accident. No plans. No expectations. No idea that one day, Dudu would become such an important part of my life.",
+shayari:"Kabhi kabhi zindagi sabse khoobsurat cheezein,<br>bina bataye de deti hai."
+},
+
+{
+title:"Something Changed",
+story:"18 December — one heart started feeling something special 💙",
+shayari:"Pehle sirf baatein thi,<br>Phir aadat bani,<br>Aur pata hi nahi chala kab zaroorat ban gaye."
+},
+
+{
+title:"It Began ❤️",
+story:"22 December — two strangers became 'Us'.",
+shayari:"Do alag kahaniyon ne,<br>Ek hi safar chun liya."
+},
+
+{
+title:"A Small Beginning",
+story:"One random Instagram reply turned into daily calls and sleepless nights 🌙💙",
+shayari:"Ek reply se shuru hui baat,<br>Aaj dil ki har baat tak pahunch gayi."
+},
+
+{
+title:"The Nights We Never Counted",
+story:"Somewhere between the late-night calls, endless conversations and one more minute before sleeping... Dudu became my favourite part of the day.",
+shayari:"Neend se zyada intezaar tumhara tha,<br>Aur subah se zyada pasand tumhari awaaz."
+},
+
+{
+title:"When It Started Feeling Like Home",
+story:"One day it stopped feeling like just a conversation. Dudu became my comfort, my habit and my safe place.",
+shayari:"Tum mile toh laga,<br>Jaise dil ko uski jagah mil gayi."
+},
+
+{
+title:"Special Moments",
+story:"26 December • 27 January • 14 February • 9 April",
+shayari:"Kuch tareekh calendar mein hoti hain,<br>Aur kuch dil mein hamesha ke liye."
+},
+
+{
+title:"7 January",
+story:"The cutest memory... still remembered with a smile 💙",
+shayari:"Waqt guzar gaya,<br>Par us din ki muskurahat aaj bhi wahi hai."
+},
+
+{
+title:"Through Every Fight",
+story:"We fought. We got upset. We misunderstood each other. But somehow, we always chose each other again.",
+shayari:"Har baar tootne se pehle,<br>Humne ek dusre ko pakad liya."
+},
+
+{
+title:"Us ❤️",
+story:"No matter what happened, I never wanted a life where Dudu wasn't in it.",
+shayari:"Mohabbat wahi hai,<br>Jahan har narazgi ke baad bhi saath rehne ki zid ho."
+},
+
+{
+title:"Dear Dudu...",
+story:"Thank you for every call. Thank you for every smile. Thank you for every sleepless night. Thank you for every memory. Thank you for being you.",
+shayari:"Kuch log zindagi mein aate hain,<br>Aur phir zindagi ban jaate hain."
+},
+
+{
+title:"6 Months Together 💙",
+story:"From strangers to an irreplaceable bond... and this is only the beginning.",
+shayari:"6 mahine sirf waqt nahi the,<br>Ye har din tumhare aur kareeb aane ka safar tha. ❤️"
+},
+
+{
+title:"For You, Dudu ❤️",
+story:"If I could relive 20 September again... I would still choose you.",
+shayari:"From a random Instagram reply...<br>To my favourite person. ❤️"
+}
+
+];
